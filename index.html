@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elafrani Consulting — Project Management & Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E8;
+  --warm-white: #FAF8F4;
+  --ink: #181410;
+  --ink-soft: #3D3530;
+  --gold: #B8965A;
+  --gold-light: #D4AF7A;
+  --gold-pale: #EDE0C4;
+  --rule: #C8B898;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); overflow-x: hidden; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.3rem 3rem;
+  background: rgba(250,248,244,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink); text-decoration: none; }
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-size: 0.74rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { font-size: 0.74rem; letter-spacing: 0.13em; text-transform: uppercase; border: 1px solid var(--gold); color: var(--gold); padding: 0.5rem 1.3rem; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.nav-cta:hover { background: var(--gold); color: #fff; }
+
+/* HERO */
+#hero { min-height: 100vh; display: grid; grid-template-columns: 55% 45%; padding-top: 64px; }
+.hero-left { background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: 7rem 5rem 6rem; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 70%, rgba(184,150,90,0.15) 0%, transparent 60%), repeating-linear-gradient(-55deg, transparent, transparent 80px, rgba(184,150,90,0.03) 80px, rgba(184,150,90,0.03) 81px); pointer-events: none; }
+.hero-eyebrow { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; display: flex; align-items: center; gap: 1rem; }
+.hero-eyebrow::before { content: ''; width: 2.5rem; height: 1px; background: var(--gold); }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 4.5vw, 5rem); font-weight: 300; line-height: 1.08; color: var(--cream); margin-bottom: 2rem; position: relative; z-index: 1; }
+.hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-sub { font-size: 0.9rem; line-height: 1.85; color: rgba(245,240,232,0.55); max-width: 400px; margin-bottom: 3rem; position: relative; z-index: 1; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+.btn-primary { background: var(--gold); color: #fff; padding: 0.85rem 2rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--gold); transition: background 0.2s; }
+.btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.btn-ghost { border: 1px solid rgba(245,240,232,0.25); color: var(--cream); padding: 0.85rem 2rem; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-right { background: var(--cream); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 7rem 4rem 6rem 5rem; position: relative; overflow: hidden; }
+.hero-right::before { content: ''; position: absolute; top: 0; right: 0; width: 70%; height: 70%; background: radial-gradient(circle at 80% 20%, rgba(184,150,90,0.12) 0%, transparent 60%); pointer-events: none; }
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: 100%; max-width: 360px; position: relative; z-index: 1; }
+.stat-card { padding: 2.2rem 2rem; border: 1px solid var(--rule); background: var(--warm-white); }
+.stat-card.dark { background: var(--ink); border-color: var(--ink); }
+.stat-card.accent { background: var(--gold); border-color: var(--gold); }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1; margin-bottom: 0.4rem; color: var(--ink); }
+.stat-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.stat-card.dark .stat-num { color: var(--cream); }
+.stat-card.dark .stat-label { color: rgba(245,240,232,0.6); }
+.stat-card.accent .stat-num, .stat-card.accent .stat-label { color: #fff; }
+.hero-wob { margin-top: 2.5rem; position: relative; z-index: 1; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-pale); padding: 0.55rem 1.1rem; background: rgba(184,150,90,0.06); }
+
+/* SHARED */
+section { padding: 7rem 0; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 3rem; }
+.section-label { font-size: 0.67rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.9rem; }
+.section-label::before { content: '◆'; font-size: 0.45rem; }
+h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; line-height: 1.2; }
+.gold-rule { width: 2.5rem; height: 1px; background: var(--gold); margin: 1.5rem 0 0; }
+
+/* ABOUT */
+#about { background: var(--warm-white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.about-body { font-size: 0.95rem; line-height: 1.9; color: var(--ink-soft); margin-bottom: 1.2rem; }
+.about-right { display: flex; flex-direction: column; gap: 1px; }
+.about-item { padding: 1.2rem 1.6rem; border: 1px solid var(--rule); background: var(--warm-white); font-size: 0.82rem; color: var(--ink-soft); line-height: 1.5; display: flex; align-items: center; gap: 1rem; transition: background 0.2s, border-color 0.2s; }
+.about-item:hover { background: var(--cream); border-color: var(--gold-pale); }
+.about-item::before { content: '—'; color: var(--gold); font-size: 0.75rem; flex-shrink: 0; }
+
+/* SERVICES */
+#services { background: var(--ink); }
+#services .section-label { color: var(--gold-light); }
+#services h2 { color: var(--cream); }
+.services-intro { font-size: 0.9rem; line-height: 1.8; color: rgba(245,240,232,0.5); max-width: 500px; margin-top: 0.8rem; }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(200,184,152,0.15); border: 1px solid rgba(200,184,152,0.15); margin-top: 3.5rem; }
+.service-card { background: var(--ink); padding: 2.5rem 2rem; transition: background 0.25s; }
+.service-card:hover { background: #211A14; }
+.service-num { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 1.3rem; }
+.service-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--cream); font-weight: 400; line-height: 1.3; margin-bottom: 1.2rem; }
+.service-rule { width: 1.8rem; height: 1px; background: var(--gold); margin-bottom: 1.2rem; }
+.service-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.service-list li { font-size: 0.78rem; color: rgba(245,240,232,0.45); line-height: 1.6; padding-left: 1rem; position: relative; }
+.service-list li::before { content: '–'; position: absolute; left: 0; color: var(--gold); }
+
+/* WHY */
+#why { background: var(--cream); }
+.why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; margin-top: 3.5rem; }
+.why-body { font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft); margin-bottom: 2rem; }
+.why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.why-card { padding: 1.8rem 1.6rem; background: var(--warm-white); border: 1px solid var(--rule); }
+.why-icon { width: 1.8rem; height: 1.8rem; background: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; }
+.why-icon svg { width: 14px; height: 14px; stroke: #fff; fill: none; stroke-width: 2; }
+.why-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
+.why-card-body { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.65; }
+.wob-highlight { background: var(--ink); color: var(--cream); padding: 2rem; display: flex; align-items: flex-start; gap: 1.2rem; margin-top: 2px; }
+.wob-hl-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--gold-light); margin-bottom: 0.4rem; }
+.wob-hl-body { font-size: 0.78rem; color: rgba(245,240,232,0.6); line-height: 1.65; }
+
+/* FOUNDER */
+#founder { background: var(--warm-white); }
+.founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+.founder-visual { background: var(--cream); border: 1px solid var(--rule); padding: 4rem 3rem; position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 420px; }
+.founder-visual::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 60%; background: linear-gradient(160deg, rgba(184,150,90,0.12) 0%, transparent 60%); }
+.founder-monogram { font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 300; color: var(--gold-pale); line-height: 1; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.founder-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--ink); position: relative; z-index: 1; }
+.founder-role { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 0.3rem; position: relative; z-index: 1; }
+.founder-body { font-size: 0.93rem; line-height: 1.88; color: var(--ink-soft); margin-bottom: 1.2rem; }
+.founder-credentials { display: flex; flex-direction: column; gap: 1px; margin-top: 2rem; }
+.credential { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: var(--cream); border: 1px solid var(--rule); font-size: 0.8rem; color: var(--ink-soft); }
+.credential::before { content: '◆'; color: var(--gold); font-size: 0.45rem; flex-shrink: 0; }
+
+/* CAPABILITIES */
+#capabilities { background: var(--ink); position: relative; overflow: hidden; }
+#capabilities::before { content: ''; position: absolute; bottom: -5rem; right: -5rem; width: 30rem; height: 30rem; background: radial-gradient(circle, rgba(184,150,90,0.08) 0%, transparent 65%); pointer-events: none; }
+#capabilities .section-label { color: var(--gold-light); }
+#capabilities h2 { color: var(--cream); }
+.cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(200,184,152,0.12); border: 1px solid rgba(200,184,152,0.12); margin-top: 3.5rem; }
+.cap-col { background: var(--ink); padding: 3rem; }
+.cap-col-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold-light); margin-bottom: 1.8rem; letter-spacing: 0.04em; }
+.cap-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.cap-list li { font-size: 0.85rem; color: rgba(245,240,232,0.55); padding-left: 1.2rem; position: relative; line-height: 1.6; }
+.cap-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+/* EXPERIENCE */
+#experience { background: var(--cream); }
+.exp-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; align-items: start; }
+.exp-body { font-size: 0.93rem; line-height: 1.88; color: var(--ink-soft); }
+.exp-sectors { display: flex; flex-direction: column; gap: 2px; margin-top: 2rem; }
+.exp-sector { display: flex; align-items: stretch; border: 1px solid var(--rule); background: var(--warm-white); transition: border-color 0.2s; }
+.exp-sector:hover { border-color: var(--gold-pale); }
+.exp-sector-bar { width: 4px; background: var(--gold); flex-shrink: 0; }
+.exp-sector-content { padding: 1.3rem 1.6rem; }
+.exp-sector-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.3rem; }
+.exp-sector-sub { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.55; }
+
+/* CONTACT */
+#contact { background: var(--warm-white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+.contact-body { font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft); margin-bottom: 2.5rem; }
+.contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: var(--ink-soft); }
+.contact-detail-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); width: 3.5rem; flex-shrink: 0; padding-top: 0.15rem; }
+.contact-detail a { color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+.contact-detail a:hover { color: var(--gold); }
+.contact-form { display: flex; flex-direction: column; gap: 1px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+.form-field { display: flex; flex-direction: column; }
+.form-field label { font-size: 0.66rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); padding: 0.8rem 1.2rem 0; background: var(--cream); border: 1px solid var(--rule); border-bottom: none; }
+.form-field input, .form-field select, .form-field textarea { font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--ink); background: var(--cream); border: 1px solid var(--rule); padding: 0.5rem 1.2rem 0.9rem; outline: none; transition: border-color 0.2s; width: 100%; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--gold); }
+.form-field select { appearance: none; cursor: pointer; }
+.form-field textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-submit { margin-top: 2px; background: var(--gold); color: #fff; border: none; padding: 1rem 2rem; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 1rem; }
+.form-submit::after { content: '→'; font-size: 1rem; }
+.form-submit:hover { background: var(--gold-light); }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 3rem 0; border-top: 1px solid rgba(200,184,152,0.15); }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.08em; color: var(--cream); }
+.footer-logo span { color: var(--gold); }
+.footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.35); letter-spacing: 0.05em; }
+.footer-wob { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,150,90,0.3); padding: 0.4rem 0.9rem; }
+
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { grid-template-columns: 1fr; }
+  .hero-right { padding: 4rem 2rem; }
+  .hero-left { padding: 6rem 2rem 4rem; }
+  .about-grid, .why-layout, .founder-grid, .exp-layout, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .container { padding: 0 1.5rem; }
+  section { padding: 5rem 0; }
+}
+@media (max-width: 600px) {
+  .services-grid, .why-cards { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Elafrani<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#founder">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Request a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <h1 class="hero-title" style="font-family:'DM Sans', sans-serif; font-size:clamp(3.2rem,6vw,6.5rem); font-weight:800; letter-spacing:0.06em; text-transform:uppercase; line-height:1; color:var(--cream); margin-bottom:3rem;">EL<span style="color:var(--gold);">AFRANI</span><br>CONSULTING</h1>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Request a Quote</a>
+      <a href="#contact" class="btn-ghost">Contact Us</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">NYC</div>
+        <div class="stat-label">New York City</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-num">NJ</div>
+        <div class="stat-label">New Jersey</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Service Areas</div>
+      </div>
+      <div class="stat-card accent">
+        <div class="stat-num">WOB</div>
+        <div class="stat-label">Certified</div>
+      </div>
+    </div>
+    <div class="hero-wob">♦ &nbsp; Women-Owned Business</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">What We Do</p>
+      <h2>Our Services</h2>
+      <p class="services-intro">Four core service pillars — each designed to manage complexity and deliver results on time and on budget.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Consulting &amp; Project Management</div>
+        <div class="service-rule"></div>
+        <ul class="service-list">
+          <li>Project planning and coordination</li>
+          <li>Detailed construction cost estimation</li>
+          <li>Vendor sourcing and coordination</li>
+          <li>Subcontractor management</li>
+          <li>Site oversight and execution</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Event &amp; Trade Show Installation</div>
+        <div class="service-rule"></div>
+        <ul class="service-list">
+          <li>Booth installation and dismantling</li>
+          <li>On-site coordination</li>
+          <li>Logistics and setup</li>
+          <li>Full event operations support</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Materials Supply &amp; Procurement</div>
+        <div class="service-rule"></div>
+        <ul class="service-list">
+          <li>Vendor sourcing</li>
+          <li>Materials purchasing</li>
+          <li>Delivery and logistics coordination</li>
+          <li>Cost-effective supply chain management</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Tenant Improvements &amp; Renovations</div>
+        <div class="service-rule"></div>
+        <ul class="service-list">
+          <li>Interior upgrades</li>
+          <li>Light construction work</li>
+          <li>Repairs and modifications</li>
+          <li>Commercial space improvements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="container">
+    <p class="section-label reveal">Leadership</p>
+    <div class="founder-grid reveal">
+      <div class="founder-visual">
+        <div class="founder-monogram">H.</div>
+        <div class="founder-name">Houda</div>
+        <div class="founder-role">Founder &amp; Principal</div>
+      </div>
+      <div>
+        <h2>Founder &amp;<br>Principal</h2>
+        <div class="gold-rule"></div>
+        <p class="founder-body" style="margin-top:1.8rem;">Houda is a Project Manager with a background in civil engineering and experience across construction and large-scale event operations. She has led projects requiring coordination between multiple stakeholders, vendors, and teams.</p>
+        <p class="founder-body">Her experience spans construction management, event production, and operational coordination — allowing her to manage projects efficiently from concept to completion.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid reveal">
+      <div>
+        <p class="section-label">Get In Touch</p>
+        <h2>Have a Project<br>in Mind?</h2>
+        <div class="gold-rule"></div>
+        <p class="contact-body" style="margin-top:1.8rem;">Let's connect. We work with commercial clients, public agencies, event organizers, and general contractors across New York City and New Jersey.</p>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Email</span>
+          <a href="/cdn-cgi/l/email-protection#4a23242c25642f262b2c382b2423292524393f263e23242d0a2d272b232664292527"><span class="__cf_email__" data-cfemail="4920272f26672c25282f3b2827202a26273a3c253d20272e092e24282025672a2624">[email&#160;protected]</span></a>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Serves</span>
+          <span>New York City &amp; New Jersey</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-detail-label">Status</span>
+          <span>Women-Owned Business</span>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your full name">
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="(000) 000-0000">
+          </div>
+          <div class="form-field">
+            <label for="project">Project Type</label>
+            <select id="project">
+              <option value="" disabled selected>Select a service</option>
+              <option>Consulting &amp; Project Management</option>
+              <option>Event &amp; Trade Show Installation</option>
+              <option>Materials Supply &amp; Procurement</option>
+              <option>Tenant Improvements &amp; Renovations</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button type="button" class="form-submit" onclick="handleSubmit()">Submit Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Elafrani<span>.</span></div>
+      <div class="footer-copy">© 2025 Elafrani Consulting. All rights reserved.</div>
+      <div class="footer-wob">Women-Owned Business</div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav scroll highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 140) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+    });
+  });
+
+  function handleSubmit() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
+    alert('Thank you, ' + name + '! We will be in touch shortly.');
+  }
+</script>
+</body>
+</html>
